@@ -81,12 +81,16 @@ class User < ApplicationRecord
   # 住所入力用
   include JpPrefecture
   jp_prefecture :prefecture_code
-  
+
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
-  
+
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+# 地図表示用
+    geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
+
 end

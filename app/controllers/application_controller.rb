@@ -12,13 +12,12 @@ class ApplicationController < ActionController::Base
 
 	# 名前ログインのために必要な記述
 	protected
-	# ログイン時のパラメーターを設定する
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :postcode, :prefecture_name, :address_city, :address_street])
 	end
 	# データ更新時のパラメーターを設定する
 	def configure_account_update_params
-        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :postcode, :prefecture_name, :address_city, :address_street])
     end
 
 end

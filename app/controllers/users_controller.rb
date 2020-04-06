@@ -76,7 +76,7 @@ end
 private
 # 名前とプロフィールイメージがきちんと入っているかチェックする
 def user_params
-	params.require(:user).permit(:name, :profile_image, :introduction, :postcode, :prefecture_name, :address_city, :address_street, :address_building)
+	params.require(:user).permit(:name, :profile_image, :introduction, :postcode, :prefecture_name, :address_city, :address_street, :address_building,:latitude, :longitude)
 end
 
 

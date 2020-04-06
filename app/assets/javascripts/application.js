@@ -53,6 +53,10 @@
 //   });
 // });
 
+
+
+
+// 住所自動入力
  $(function(){
     $("#user_postcode").jpostal({
     postcode : [ "#user_postcode" ],
