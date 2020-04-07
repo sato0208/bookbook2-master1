@@ -1,10 +1,14 @@
 class User < ApplicationRecord
-	attachment :image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-# 多数のbookと一つのuserを関連づけする
+
+  # welcomeメールの送信
+  # Userが新規作成された後にメールを送信するためのメソッドを呼び出す
+  after_create :send_welcome_mail
+
+  # 多数のbookと一つのuserを関連づけする
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -15,8 +19,8 @@ class User < ApplicationRecord
   # 五十文字以上はバリデート
   validates :introduction, length:{ maximum: 50}
 
-# foregin_key = 入口
-# source = 出口
+  # foregin_key = 入口
+  # source = 出口
 
   # フォロー、フォロワー機能
   has_many :relationships, class_name: 'Relationship', foreign_key: 'user_id'
@@ -92,5 +96,9 @@ class User < ApplicationRecord
 # 地図表示用
     geocoded_by :address_city
   after_validation :geocode, if: :address_city_changed?
+# welcomeメールの送信
+def send_welcome_mail
+  UserMailer.user_welcome_mail(self).deliver
+end
 
 end

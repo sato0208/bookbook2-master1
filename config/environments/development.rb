@@ -35,6 +35,29 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # メールサーバーの設定追加分
+  # メールの送信に失敗した時にエラーを発火させるか (デフォルト値: false)
+  config.action_mailer.raise_delivery_errors = true
+  # メールを送信する方法 (デフォルト値: :smtp)
+  config.action_mailer.delivery_method = :smtp
+  # :smtpモードでの設定情報
+  config.action_mailer.smtp_settings = {
+      # SMTPサーバーのホスト名
+      :address => 'smtp.gmail.com',
+      # SMTPサーバーのポート番号
+      :port => 587,
+      # ドメイン
+      :domain => "gmail.com",
+      # メール送信に使用するgmailのアカウント
+      :user_name => 'kujira028@gmail.com',
+      # メール送信に使用するgmailのパスワード
+      :password => "Mikan0208",
+      # 認証方法
+      :authentication => :plain,
+      # メールの送信にTLS認証を使用するか
+      :enable_starttls_auto => true
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
