@@ -46,7 +46,7 @@ Rails.application.configure do
       :address => 'smtp.gmail.com',
       # SMTPサーバーのポート番号
       :port => 587,
-      # ドメインを記載
+      # ドメインを記載する！！！
       :domain => "gmail.com",
       # メール送信に使用するgmailのアカウント
       :user_name => ENV['USER_NAME'],
