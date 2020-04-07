@@ -96,9 +96,8 @@ class User < ApplicationRecord
 # 地図表示用
     geocoded_by :address_city
   after_validation :geocode, if: :address_city_changed?
-# welcomeメールの送信
-def send_welcome_mail
-  UserMailer.user_welcome_mail(self).deliver
-end
-
+  # welcomeメールの送信
+  def send_welcome_mail
+    UserMailer.user_welcome_mail(self).deliver
+  end
 end
