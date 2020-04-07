@@ -33,7 +33,7 @@
     <%= f.text_field :postcode,id:"user_postcode" %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= f.label :prefecture_code %><br>
     <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, include_blank: true  %>
   </div>

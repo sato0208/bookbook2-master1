@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
    		user_url(resource)
  	end
 
-
-
-	# 名前ログインのために必要な記述
+ 	# サインアップ時に保存するカラムを追加する
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :postcode, :prefecture_name, :address_city, :address_street])
@@ -19,5 +17,4 @@ class ApplicationController < ActionController::Base
 	def configure_account_update_params
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :postcode, :prefecture_name, :address_city, :address_street])
     end
-
 end

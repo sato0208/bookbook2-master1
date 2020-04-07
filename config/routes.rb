@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'search' => 'users#search'
 
 # 自動的にルーティングを設定してくれる
-  resources :maps, only: [:index]
   resources :relationships, only: [:create, :destroy]
   resources :books, only: [:create, :index, :show, :new, :edit, :destroy, :update] do
     resource :favorites, only:[:create, :destroy]
