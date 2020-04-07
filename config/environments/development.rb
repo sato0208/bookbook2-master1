@@ -49,9 +49,10 @@ Rails.application.configure do
       # ドメイン
       :domain => "gmail.com",
       # メール送信に使用するgmailのアカウント
-      :user_name => 'kujira028@gmail.com',
+      # :user_name => 'kujira028@gmail.com',
+      :user_name => ENV['USER_NAME'],
       # メール送信に使用するgmailのパスワード
-      :password => "Mikan0208",
+      :password => ENV['PASSWORD'],
       # 認証方法
       :authentication => :plain,
       # メールの送信にTLS認証を使用するか
